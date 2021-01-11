@@ -5,6 +5,7 @@ import functools
 import json
 import os
 import pickle
+import sys
 
 from lxml import etree
 
@@ -617,6 +618,7 @@ class JdSeckill(object):
             if global_config.getRaw('messenger', 'enable') == 'true':
                 success_message = "抢购成功，订单号:{}, 总价:{}, 电脑端付款链接:{}".format(order_id, total_money, pay_url)
                 send_wechat(success_message)
+            sys.exit(1)
             return True
         else:
             logger.info('抢购失败，返回信息:{}'.format(resp_json))
