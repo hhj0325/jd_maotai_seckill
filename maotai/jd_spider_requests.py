@@ -482,7 +482,7 @@ class JdSeckill(object):
 
     def request_seckill_checkout_page(self):
         """访问抢购订单结算页面"""
-        logger.info('访问抢购订单结算页面...')
+        # logger.info('访问抢购订单结算页面...')
         url = 'https://marathon.jd.com/seckill/seckill.action'
         payload = {
             'skuId': self.sku_id,
@@ -500,7 +500,7 @@ class JdSeckill(object):
         """获取秒杀初始化信息（包括：地址，发票，token）
         :return: 初始化信息组成的dict
         """
-        logger.info('获取秒杀初始化信息...')
+        # logger.info('获取秒杀初始化信息...')
         url = 'https://marathon.jd.com/seckillnew/orderService/pc/init.action'
         data = {
             'sku': self.sku_id,
@@ -525,7 +525,7 @@ class JdSeckill(object):
         """生成提交抢购订单所需的请求体参数
         :return: 请求体参数组成的dict
         """
-        logger.info('生成提交抢购订单所需参数...')
+        # logger.info('生成提交抢购订单所需参数...')
         # 获取用户秒杀初始化信息
         self.seckill_init_info[self.sku_id] = self._get_seckill_init_info()
         init_info = self.seckill_init_info.get(self.sku_id)
@@ -584,7 +584,7 @@ class JdSeckill(object):
             logger.info('抢购失败，无法获取生成订单的基本信息，接口返回:【{}】'.format(str(e)))
             return False
 
-        logger.info('提交抢购订单...')
+        # logger.info('提交抢购订单...')
         headers = {
             'User-Agent': self.user_agent,
             'Host': 'marathon.jd.com',
